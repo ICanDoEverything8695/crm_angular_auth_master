@@ -1,0 +1,63 @@
+<h4 mat-dialog-title>{{isEditModal ? 'Edit organization' : 'Create new organization'}}</h4>
+<mat-dialog-content class="dialog-content">
+  <div class="container">
+    <div class="row" *ngIf="!prepopulated">
+      <div class="organization-modal-tip-container">
+        <span><mat-icon>info</mat-icon>You may need to input all information manually.</span>
+      </div>
+    </div>
+    <div class="row">
+      <mat-form-field class="col-12 col-sm-6">
+        <input matInput name="name" [(ngModel)]="organization.name" placeholder="Organization name" required>
+      </mat-form-field>
+      <div class="organization-types-input-group col-12 col-sm-6">
+        <mat-form-field class="w-100">
+          <mat-select placeholder="Organization type" [(ngModel)]="organization.organization_type_id" required>
+            <mat-option *ngFor="let type of organization_types" [value]="type.id">{{type.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <crm-input-box-spinner *ngIf="organization_types_isLoading"></crm-input-box-spinner>
+      </div>
+    </div>
+    <div class="row">
+      <mat-form-field class="col-12 col-sm-6">
+        <input matInput [(ngModel)]="organization.street_name" placeholder="Street name">
+      </mat-form-field>
+      <mat-form-field class="col-12 col-sm-6">
+        <input matInput [(ngModel)]="organization.city" placeholder="City">
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field class="col-12 col-sm-6">
+        <input matInput [(ngModel)]="organization.state" placeholder="State">
+      </mat-form-field>
+      <mat-form-field class="col-12 col-sm-6">
+        <input matInput [(ngModel)]="organization.country" placeholder="Country">
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field class="col-6 col-sm-3">
+        <input matInput [(ngModel)]="organization.street_number" placeholder="Street number">
+      </mat-form-field>
+      <mat-form-field class="col-6 col-sm-3">
+        <input matInput [(ngModel)]="organization.state_code" placeholder="State code">
+      </mat-form-field>
+      <mat-form-field class="col-6 col-sm-3">
+        <input matInput [(ngModel)]="organization.postal_code" placeholder="Postal code">
+      </mat-form-field>
+      <mat-form-field class="col-6 col-sm-3">
+        <input matInput [(ngModel)]="organization.country_code" placeholder="Country code">
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <agm-map [latitude]="strToNum(organization.lat)" [longitude]="strToNum(organization.lng)">
+        <agm-marker [latitude]="strToNum(organization.lat)" [longitude]="strToNum(organization.lng)"></agm-marker>
+      </agm-map>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions class="flex-row-reverse">
+  <button *ngIf="!isEditModal" class="ml-1" mat-raised-button color="primary" [disabled]="!checkValidation()" (click)="createOrganization()">Create</button>
+  <button *ngIf="isEditModal" class="ml-1" mat-raised-button color="primary" [disabled]="!checkValidation()" (click)="editOrganization()">Update</button>
+  <button class="ml-1" mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

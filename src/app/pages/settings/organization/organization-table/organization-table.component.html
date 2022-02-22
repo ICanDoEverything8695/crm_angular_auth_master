@@ -1,0 +1,76 @@
+<div class="organization-table-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource" class="organization-table">
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="org_type_name">
+      <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.org_type_name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="street_number">
+      <mat-header-cell *matHeaderCellDef> Street Number</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.street_number}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="street_name">
+      <mat-header-cell *matHeaderCellDef> Street Name</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.street_name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="city">
+      <mat-header-cell *matHeaderCellDef> City</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.city}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="state">
+      <mat-header-cell *matHeaderCellDef> State</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.state}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="country">
+      <mat-header-cell *matHeaderCellDef> Country</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.country}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="state_code">
+      <mat-header-cell *matHeaderCellDef class="text-center"> State Code</mat-header-cell>
+      <mat-cell *matCellDef="let element" class="text-center"> {{element.state_code}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="country_code">
+      <mat-header-cell *matHeaderCellDef class="text-center"> Country Code</mat-header-cell>
+      <mat-cell *matCellDef="let element" class="text-center"> {{element.country_code}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="postal_code">
+      <mat-header-cell *matHeaderCellDef class="text-center"> Postal Code</mat-header-cell>
+      <mat-cell *matCellDef="let element" class="text-center"> {{element.postal_code}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef class="text-right"> Actions</mat-header-cell>
+      <mat-cell *matCellDef="let element" class="text-right">
+        <div class="org-operating-action" *ngIf="!element.is_deleted && element.org_type_id !== 1">
+          <mat-icon class="action-icon" (click)="onEditItem(element)" matTooltip="Edit" matTooltipPosition="above">mode_edit</mat-icon>
+          <mat-icon class="action-icon" (click)="onDeleteItem(element)" matTooltip="Delete" matTooltipPosition="above">delete</mat-icon>
+        </div>
+        <div class="org-deleted-tip" *ngIf="element.is_deleted">
+          <mat-icon class="action-icon" (click)="onRestoreItem(element)" matTooltip="Restore" matTooltipPosition="above">restore</mat-icon>
+          <div class="tip-container">
+            <mat-icon>warning</mat-icon><span>Deleted</span>
+          </div>
+        </div>
+        <div class="org-admin-tip" *ngIf="element.org_type_id === 1">
+          <mat-icon>business</mat-icon>
+        </div>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns" class="org-table-header"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" [class.deleted_org]="row.is_deleted" [class.crm_org]="row.org_type_id === 1"></mat-row>
+  </mat-table>
+</div>

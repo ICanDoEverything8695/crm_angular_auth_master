@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-light sticky-top py-lg-3 px-lg-5">
+  <a class="navbar-brand" routerLink="/"><img src="assets/images/logo-pilot.png"></a>
+  <!--MAIN NAV ITEMS-->
+  <a mat-icon-button (click)="toggleSideNav.emit()" class="hamberger d-lg-none"><mat-icon>menu</mat-icon></a>
+  <div class="collapse navbar-collapse hidden-xs" id="navbarSupportedContent">
+    <ul class="navbar-nav mt-2 mt-md-0">
+      <li class="nav-item pull-right">
+        <button mat-menu-item routerLinkActive="active" routerLink="/analytics">Analytics</button>
+      </li>
+      <!--<li class="nav-item pull-right">-->
+        <!--<button mat-menu-item routerLinkActive="active" routerLink="/recommendations">Recommendations</button>-->
+      <!--</li>-->
+      <li class="nav-item pull-right" [crmRoleGuard]="[userRoles.KA]">
+        <button mat-menu-item routerLinkActive="active" routerLink="/datasource">Datasource</button>
+      </li>
+      <li class="nav-item pull-right" [crmRoleGuard]="[userRoles.KA]">
+        <button mat-menu-item routerLinkActive="active" routerLink="/approvals">Approvals</button>
+      </li>
+      <li class="nav-item pull-right">
+        <button mat-menu-item routerLinkActive="active" routerLink="/settings">Settings</button>
+      </li>
+    </ul>
+    <!--PROFILE NAV MENU-->
+    <ul class="navbar-nav mt-2 ml-auto mt-md-0">
+      <li class="nav-item">
+        <div class="btn-group">
+          <a class="menu-company-name">{{currentUser.org_name}} - </a> <button mat-menu-item [matMenuTriggerFor]="menu" class="menu-user-name"><span>{{currentUser.username}}<i class="fa fa-sort-desc ml-2" aria-hidden="true"></i></span></button>
+        </div>
+        <mat-menu #menu="matMenu" xPosition="after">
+          <button mat-menu-item routerLink="/settings/profile"><span>Account</span></button>
+          <hr>
+          <!--<button mat-menu-item><span>Knowledgebase</span></button>-->
+          <button mat-menu-item><span>Support</span></button>
+          <button mat-menu-item><span>Privacy</span></button>
+          <hr>
+          <button mat-menu-item (click)="logout()"><span>Sign Out</span></button>
+        </mat-menu>
+      </li>
+    </ul>
+  </div>
+</nav>

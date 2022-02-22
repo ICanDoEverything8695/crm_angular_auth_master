@@ -1,52 +1,42 @@
-# Prerequisites
-*.d
+# See http://help.github.com/ignore-files/ for more about ignoring files.
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+# compiled output
+/dist
+/tmp
+/out-tsc
 
-# Linker output
-*.ilk
-*.map
-*.exp
+# dependencies
+/node_modules
 
-# Precompiled Headers
-*.gch
-*.pch
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/typings
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
+# e2e
+/e2e/*.js
+/e2e/*.map
 
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+# System Files
+.DS_Store
+Thumbs.db

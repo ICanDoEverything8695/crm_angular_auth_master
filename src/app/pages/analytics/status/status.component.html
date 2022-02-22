@@ -1,0 +1,28 @@
+<mat-card class="status-section mb-3">
+  <mat-tab-group>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <small class="tab-header">Total Purchases</small>
+        <p class="tab-main">${{(totalPurchases?.totalSum ? totalPurchases?.totalSum : 0) | currencyPipe}}</p>
+      </ng-template>
+      <div class="tab-content">
+        <div id="chart-demo">
+          <div class="no-item-to-display" *ngIf="!totalPurchasesGraphData.length">
+            <p>No entries to render.</p>
+          </div>
+          <dx-chart [dataSource]="totalPurchasesGraphData" [legend]="legend" *ngIf="totalPurchasesGraphData.length">
+            <dxi-series valueField="avgAmount" color="#376cd6"></dxi-series>
+            <dxi-value-axis><dxo-label format="thousands"></dxo-label></dxi-value-axis>
+            <dxo-argument-axis><dxo-label format="longDate"></dxo-label></dxo-argument-axis>
+            <dxo-common-series-settings
+                #commonSeries
+                argumentField="dateFormatted"
+                type="area">
+            </dxo-common-series-settings>
+            <dxo-margin [bottom]="20"></dxo-margin>
+          </dx-chart>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</mat-card>

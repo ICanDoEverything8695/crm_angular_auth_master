@@ -1,0 +1,10 @@
+<h4 mat-dialog-title>{{intg?.type?.label}} Integration</h4>
+<mat-dialog-content class="dialog-content">
+  <div class="container">
+    <sf-form [schema]="intg?.type?.details" [model]="formModel" (onChange)="onFormChange($event)"></sf-form>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions class="flex-row-reverse">
+  <button class="ml-1" mat-raised-button color="primary" (click)="onSave()">Save</button>
+  <button class="ml-1" mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

@@ -1,0 +1,86 @@
+<div class="container approvals-content">
+  <h2 class="title">Approvals</h2>
+  <mat-card class="approvals-detail-card" (window:resize)="onResize($event)">
+    <mat-form-field class="url-input-box">
+      <input matInput placeholder="" [value]="url" disabled>
+    </mat-form-field>
+
+    <div class="" *ngIf="showDualListbox">
+      <p>New Keytags Count: {{newKeyTags.length}}</p>
+      <dual-list *ngIf="showDualListbox" sort="true" [source]="newKeyTags" [(destination)]="pending_approvedKeyTags" [key]="'id'" [display]="'display_name'" [editLeft]="true" height="300px" (editItem)="onEdit($event)"></dual-list>
+    </div>
+
+    <ng-container *ngIf="!showDualListbox">
+      <div class="row">
+        <div class="col">
+          <div class="image-gallery">
+            <div class="gallery-container">
+              <div class="gallery-item" *ngFor="let image of images;let i = index">
+                <img class="img-thumbnail" [src]="image.url" onError="this.src='assets/images/placeholder.gif';">
+                <div class="img-mng-widget">
+                  <div class="overlay"></div>
+                  <div class="img-mng-button-group">
+                    <button mat-mini-fab color="warn" (click)="deleteImage(image, i)">
+                      <mat-icon aria-label="Delete image">delete_forever</mat-icon>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <mat-tab-group>
+        <mat-tab label="Approved">
+          <crm-approval-keytag-list [keytags]="approvedKeyTags" type="approved" [gridCol]="gridCol" (disapprove)="onDisapproveItem($event.key, $event.i)"></crm-approval-keytag-list>
+        </mat-tab>
+        <mat-tab label="Disapproved">
+          <crm-approval-keytag-list [keytags]="disapprovedKeyTags" type="disapproved" [gridCol]="gridCol" (reapprove)="onReapproveItem($event.key, $event.i, $event.flag, 'disapproved')"></crm-approval-keytag-list>
+        </mat-tab>
+        <mat-tab label="Pre-Approved">
+          <crm-approval-keytag-list [keytags]="preApprovedKeyTags" type="pre-approved" [gridCol]="gridCol" (reapprove)="onReapproveItem($event.key, $event.i, $event.flag, 'pre-approved')"></crm-approval-keytag-list>
+        </mat-tab>
+        <mat-tab label="Pre-Disapproved">
+          <crm-approval-keytag-list [keytags]="preDisapprovedKeyTags" type="pre-disapproved" [gridCol]="gridCol" (reapprove)="onReapproveItem($event.key, $event.i, $event.flag, 'pre-disapproved')"></crm-approval-keytag-list>
+        </mat-tab>
+      </mat-tab-group>
+
+    </ng-container>
+    <ng-container>
+      <div class="stats">
+        <div class="stats-column">
+          <div class="stats-row">
+            <span>New Keytags:</span>
+            <span>{{stats.newCount}}</span>
+          </div>
+          <div class="stats-row">
+            <span>Approved Keytags:</span>
+            <span>{{stats.approvedCount}}</span>
+          </div>
+          <div class="stats-row">
+            <span>Disapproved Keytags:</span>
+            <span>{{stats.disapprovedCount}}</span>
+          </div>
+        </div>
+        <div class="stats-column">
+          <div class="stats-row">
+            <span>Pre-Approved Keytags:</span>
+            <span>{{stats.preApprovedCount}}</span>
+          </div>
+          <div class="stats-row">
+            <span>Pre-Disapproved Keytags:</span>
+            <span>{{stats.preDisapprovedCount}}</span>
+          </div>
+        </div>
+      </div>
+      <!--<p>(Status from server : New KeyTags - {{stats.newCount}}, Approved KeyTags - {{stats.approvedCount}}, Disapproved KeyTags - {{stats.disapprovedCount}}, Pre-Approved KeyTags - {{stats.preApprovedCount}}, Pre-Disapproved KeyTags - {{stats.preDisapprovedCount}} )</p>-->
+      <div class="approve-action-container">
+        <button mat-raised-button color="warn" (click)="onCompleteApproval()">Complete Approval</button>
+        <button mat-raised-button color="primary" (click)="onApproveKeywords()" *ngIf="showDualListbox">Approve</button>
+        <button mat-raised-button color="primary" (click)="toggleView(false)" *ngIf="showDualListbox">Back</button>
+        <button mat-raised-button color="primary" (click)="toggleView(true)" *ngIf="!showDualListbox">Manage key tags</button>
+      </div>
+    </ng-container>
+  </mat-card>
+</div>

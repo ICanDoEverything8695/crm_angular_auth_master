@@ -1,0 +1,38 @@
+.page-titles {
+  background-color: transparent;
+  .breadcrumb {
+    background-color: transparent;
+    margin-bottom: 0;
+    a, li {
+      color: black;
+      font-size: 20px;
+      &.active {
+        font-weight: bold;
+      }
+    }
+    .breadcrumb-item + .breadcrumb-item::before {
+      content: ">";
+      color: black;
+    }
+  }
+  .border-btn-group {
+    button {
+      background-color: transparent;
+      color: black;
+      &:hover {
+        background-color: transparent;
+      }
+      @include media-breakpoint-down(sm) {
+        font-size: 13px;
+      }
+    }
+  }
+  @include media-breakpoint-down(sm) {
+    .date-filter {
+      justify-content: flex-start !important;
+    }
+    .filter-wrapper {
+      display: flex;
+    }
+  }
+}

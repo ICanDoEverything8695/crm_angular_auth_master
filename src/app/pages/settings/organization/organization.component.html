@@ -1,0 +1,20 @@
+<h2 class="title">Organizations</h2>
+<mat-card class="organization-card">
+  <mat-card-content>
+    <div class="container">
+      <div class="row">
+        <div class="domain-input-group">
+          <div class="input-group" [class.has-error]="org_domain.hasError">
+            <input type="url" class="form-control" placeholder="Input domain of organization" name="org_domain" [(ngModel)]="org_domain.value" (ngModelChange)="org_domain.hasError=false">
+            <span class="input-group-btn">
+              <button mat-raised-button [color]="org_domain.hasError?'warn':'primary'" type="button" [disabled]="!org_domain.value" (click)="addNewOrganization()">Add a new organization</button>
+            </span>
+            <crm-input-box-spinner *ngIf="org_domain.isLoading"></crm-input-box-spinner>
+          </div>
+          <div class="form-control-feedback" *ngIf="org_domain.hasError" @flyInOut >Sorry, we can not fetch information...</div>
+        </div>
+      </div>
+      <crm-organization-table class="row" (restoreItem)="onRestoreItem($event)" (editItem)="onEditItem($event)" (deleteItem)="onDeleteItem($event)"></crm-organization-table>
+    </div>
+  </mat-card-content>
+</mat-card>

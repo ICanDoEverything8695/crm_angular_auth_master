@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-light settings-sub-nav px-lg-5 d-none d-lg-block">
+  <div class="navbar-collapse">
+    <ul class="navbar-nav mt-2 mt-md-0">
+      <li class="nav-item pull-right">
+        <button mat-menu-item routerLinkActive="active" routerLink="profile">Profile</button>
+      </li>
+      <!--<li class="nav-item pull-right">-->
+        <!--<button mat-menu-item routerLinkActive="active" routerLink="notifications">Notifications</button>-->
+      <!--</li>-->
+      <li class="nav-item pull-right" [crmRoleGuard]="[userRoles.KA]">
+        <button mat-menu-item routerLinkActive="active" routerLink="organization">Organization</button>
+      </li>
+      <li class="nav-item pull-right" [crmRoleGuard]="[userRoles.KA, userRoles.AA, userRoles.SA, userRoles.BA, userRoles.KS]">
+        <button mat-menu-item routerLinkActive="active" [routerLink]="'integrations/' + myOrgId">Integrations</button>
+      </li>
+      <li class="nav-item pull-right" [crmRoleGuard]="[userRoles.KA, userRoles.AA, userRoles.SA, userRoles.BA]">
+        <button mat-menu-item routerLinkActive="active" [routerLink]="'organizations/' + myOrgId">Users</button>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container settings-content">
+  <router-outlet></router-outlet>
+</div>

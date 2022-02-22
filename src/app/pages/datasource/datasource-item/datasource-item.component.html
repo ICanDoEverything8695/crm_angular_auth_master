@@ -1,0 +1,86 @@
+<div class="container approvals-content">
+  <h2 class="title">Datasource</h2>
+  <mat-card class="datasource-card">
+    <form #f="ngForm">
+      <div class="row">
+        <mat-form-field class="col">
+          <input matInput placeholder="Title" name="title" [(ngModel)]="detail.title" disabled required>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field class="col">
+          <input matInput placeholder="Url" name="url" [(ngModel)]="detail.url" disabled required>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <img class="img-thumbnail" *ngIf="detail.image" [src]="detail.image" onError="this.src='assets/images/placeholder.gif';">
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="row">
+            <mat-form-field class="col">
+              <input type="text" matInput placeholder="Created by" name="createdBy" [(ngModel)]="detail.created_by" disabled required>
+            </mat-form-field>
+            <mat-form-field class="col">
+              <input type="text" matInput placeholder="Updated by" name="updatedBy" [(ngModel)]="detail.updated_by" disabled required>
+            </mat-form-field>
+            <mat-form-field class="col">
+              <input type="text" matInput placeholder="State" name="state" [(ngModel)]="detail.state" disabled required>
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <mat-form-field class="col">
+              <input type="text" matInput placeholder="Last sate change" name="lastStateChange" [ngModel]="detail.last_state_change | date : 'short'" disabled required>
+            </mat-form-field>
+            <mat-form-field class="col">
+              <input type="text" matInput placeholder="Is training" name="isTraining" [(ngModel)]="detail.is_training" disabled required>
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <mat-form-field class="col">
+              <input type="number" matInput placeholder="New keyword" name="newKeyword" [(ngModel)]="detail.new_keywords" disabled required>
+            </mat-form-field>
+            <mat-form-field class="col">
+              <input type="number" matInput placeholder="Approved" name="approved" [(ngModel)]="detail.approved" disabled required>
+            </mat-form-field>
+            <mat-form-field class="col">
+              <input type="number" matInput placeholder="Disapproved" name="disapproved" [(ngModel)]="detail.disapproved" disabled required>
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <mat-form-field class="col">
+              <input type="number" matInput placeholder="State changes" name="stateChanges" [(ngModel)]="detail.state_changes" disabled required>
+            </mat-form-field>
+            <mat-form-field class="col">
+              <input type="number" matInput placeholder="Old approved" name="oldApproved" [(ngModel)]="detail.were_approved" disabled required>
+            </mat-form-field>
+            <mat-form-field class="col">
+              <input type="number" matInput placeholder="Old disapproved" name="oldDisapproved" [(ngModel)]="detail.were_disapproved" disabled required>
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <mat-form-field class="col">
+              <input type="number" matInput placeholder="Samples" name="samples" [(ngModel)]="detail.samples" disabled required>
+            </mat-form-field>
+            <mat-form-field class="col">
+              <input type="number" matInput placeholder="Images" name="images" [(ngModel)]="detail.images" disabled required>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="row">
+      <div class="col">
+        <mat-input-container>
+          <input matInput placeholder="Search keyword..." name="keywords" [(ngModel)]="searchKeyword">
+        </mat-input-container>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 keyword-container">
+        <span *ngFor="let item of keywords | filterBy : ['name', 'tag'] : searchKeyword">{{item.name}}({{item.tag}})</span>
+      </div>
+    </div>
+  </mat-card>
+</div>
+

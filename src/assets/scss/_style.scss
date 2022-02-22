@@ -1,0 +1,23 @@
+.analytics-grid-list {
+  margin: 0 -10px;
+  max-height: 230px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 11px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #2BB2B6;
+    border-radius: 5px;
+  }
+
+  mat-list-item {
+    border-bottom: 1px solid $light-gray;
+    &.mat-list-item .mat-list-item-content {
+      height: 35px !important;
+    }
+    &:first-child {
+      border-top: 1px solid $light-gray;
+    }
+  }
+}

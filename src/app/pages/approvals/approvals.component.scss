@@ -1,0 +1,22 @@
+.no-item-message-container {
+  background-color: rgba(43, 178, 182, 0.18);
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #2BB2B6;
+  margin-bottom: 10px;
+  span {
+    color: #2BB2B6;
+    mat-icon {
+      float: left;
+      margin-right: 6px;
+      color: #2BB2B6;
+    }
+  }
+}
+
+.list-text-wrapper {
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

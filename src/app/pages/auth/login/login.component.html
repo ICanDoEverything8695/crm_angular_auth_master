@@ -1,0 +1,35 @@
+<section class="auth-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-md-6 col-lg-4 auth-box offset-sm-2 offset-md-3 offset-lg-4">
+        <img src="assets/images/logo.png" class="img-logo">
+        <h1 class="login-title">Sign In</h1>
+        <div class="account-wall">
+          <form class="form-auth" #f="ngForm" (ngSubmit)="f.form.valid && login(f)" novalidate>
+            <!--INPUT-->
+            <mat-form-field class="w-100">
+              <input matInput id="username" placeholder="Username" name="username" [(ngModel)]="user.username" autofocus>
+            </mat-form-field>
+            <mat-form-field class="w-100 mb-3">
+              <input matInput id="password" placeholder="Password" type="password" name="password" [(ngModel)]="user.password">
+            </mat-form-field>
+            <!--START ERROR MESSAGE-->
+            <div class="form-group text-danger" *ngIf="error.isError">
+              <div class="form-control-feedback">{{error.message}}</div>
+            </div>
+            <!--REMEMBER ME-->
+            <div class="form-group text-left">
+              <mat-checkbox color="primary" name="rememberMe" [(ngModel)]="rememberMe" ngDefaultControl>Remember me</mat-checkbox>
+            </div>
+            <div class="my-lg-3 text-left">
+              <span>Forgot your password?</span><a class="ml-1 primary-color" routerLink="/forgot_password"> Click here</a>
+            </div>
+            <!--SUBMIT-->
+            <button mat-raised-button color="primary" class="btn btn-lg btn-block" type="submit">Sign In</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,69 @@
+<!--MAIN CONTENT WRAPPER-->
+<section class="main-wrapper">
+  <crm-navbar (toggleSideNav)="toggleSideNav(sidenav)"></crm-navbar>
+
+  <mat-sidenav-container class="mat-side-nav-container">
+
+    <mat-sidenav #sidenav class="side-nav-menu">
+      <ul class="navbar-nav mt-2 mt-md-0">
+        <li class="nav-item pull-right">
+          <button mat-menu-item class="sidenav" routerLinkActive="active" routerLink="/analytics">Analytics</button>
+        </li>
+        <li class="nav-item pull-right" [crmRoleGuard]="[userRoles.KA]">
+          <button mat-menu-item class="sidenav" routerLinkActive="active" routerLink="/datasource">Datasource</button>
+        </li>
+        <li class="nav-item pull-right" [crmRoleGuard]="[userRoles.KA]">
+          <button mat-menu-item class="sidenav" routerLinkActive="active" routerLink="/approvals">Approvals</button>
+        </li>
+        <li class="nav-item pull-right">
+          <button mat-menu-item class="sidenav" routerLinkActive="active" routerLink="/settings">Settings</button>
+        </li>
+      </ul>
+      <ul class="navbar-nav mt-2 mt-md-0">
+        <li class="nav-item pull-right">
+          <button mat-menu-item class="sidenav-setting" routerLinkActive="active" routerLink="/settings/profile">Profile</button>
+        </li>
+        <li class="nav-item pull-right" [crmRoleGuard]="[userRoles.KA]">
+          <button mat-menu-item class="sidenav-setting" routerLinkActive="active" routerLink="/settings/organization">Organization</button>
+        </li>
+        <li class="nav-item pull-right" [crmRoleGuard]="[userRoles.KA, userRoles.AA, userRoles.SA, userRoles.BA, userRoles.KS]">
+          <button mat-menu-item class="sidenav-setting" routerLinkActive="active" [routerLink]="'/settings/integrations/' + myOrgId">Integrations</button>
+        </li>
+        <li class="nav-item pull-right" [crmRoleGuard]="[userRoles.KA, userRoles.AA, userRoles.SA, userRoles.BA]">
+          <button mat-menu-item class="sidenav-setting" routerLinkActive="active" [routerLink]="'/settings/organizations/' + myOrgId">Users</button>
+        </li>
+      </ul>
+      <ul class="navbar-nav mt-2 mt-md-0 setting-nav">
+        <li class="nav-item pull-right">
+          <button mat-menu-item class="sidenav-setting" routerLinkActive="active" routerLink="/settings/profile">Account</button>
+        </li>
+        <li class="nav-item pull-right">
+          <button mat-menu-item class="sidenav-setting">Support</button>
+        </li>
+        <li class="nav-item pull-right">
+          <button mat-menu-item class="sidenav-setting">Privacy</button>
+        </li>
+        <li class="nav-item pull-right">
+          <button mat-menu-item class="sidenav-setting" (click)="logout()">Sign Out</button>
+        </li>
+      </ul>
+    </mat-sidenav>
+
+    <div class="side-nav-content">
+        <!--ROUTING CONTENT START-->
+        <router-outlet></router-outlet>
+        <!--ROUTING CONENT END-->
+    </div>
+    <crm-chat></crm-chat>
+
+  </mat-sidenav-container>
+
+</section>
+<!--END MAIN CONTENT WRAPPER-->
+
+<div class="idle-alert" *ngIf="idleShow">
+  <div class="idle-alert-backdrop"></div>
+  <div class="idle-alert-dialog">
+    <p>You will be logged out in ({{idleCountdown}} of seconds).</p>
+  </div>
+</div>

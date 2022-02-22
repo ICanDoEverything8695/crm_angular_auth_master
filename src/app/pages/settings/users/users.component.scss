@@ -1,0 +1,63 @@
+.org-select-container {
+  margin: 10px -15px;
+}
+
+.org-info-column {
+  display: flex;
+  justify-content: flex-end;
+  .org-info-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    width: 300px;
+    p {
+      font-weight: bold;
+    }
+    & > p {
+      text-align: center;
+    }
+    & > div.org-info-content {
+      display: flex;
+      flex-direction: column;
+      & > div {
+        display: flex;
+        flex-direction: row;
+        & > p {
+          width: 100%;
+          &:first-child {
+            text-align: right;
+            padding-right: 10px;
+          }
+          &:last-child {
+            text-align: left;
+            padding-left: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.status {
+  font-size: 15px;
+  position: relative;
+  padding-left: 7px;
+  mat-icon {
+    font-size: 15px;
+    width: 15px;
+    height: 19px;
+    top: 3px;
+    position: relative;
+  }
+  &.verified {
+    color: #17a2b8;
+    mat-icon {
+      font-size: 15px;
+      color: #17a2b8;
+    }
+  }
+}
+
+.restore-user-btn {
+  margin: 0 20px;
+}

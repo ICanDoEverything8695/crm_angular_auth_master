@@ -1,0 +1,52 @@
+
+<div class="page-header">
+  <h2 class="title">Integrations</h2>
+  <mat-form-field *ngIf="me.user_role === userRoles.KA || me.user_role === userRoles.KS">
+    <mat-select placeholder="Select organization" [(ngModel)]="organization" (ngModelChange)="onSelectOranization()">
+      <mat-option *ngFor="let org of organizations" [value]="org">{{org.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<mat-card class="integrations-card">
+  <mat-card-content>
+    <div class="row">
+      <div class="col-md-3 col-lg-3 d-none d-lg-block">
+        <ul class="integrations-sidebar">
+          <li *ngFor="let menu of sidebar_menus" routerLinkActive="active">
+            <button mat-menu-item [routerLink]="['.']"  [queryParams]="{category: menu.category}">{{menu.label}}</button>
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-12 col-md-12 col-lg-9">
+        <!--<crm-integrations-list></crm-integrations-list>-->
+        <mat-list class="integrate-list">
+          <mat-list-item class="integrate-list-item" *ngFor="let intg of integrationsInfo">
+            <img mat-list-icon [src]="'assets/images/' + intg?.type?.img" />
+            <h4 mat-line>{{intg?.type?.label}}</h4>
+            <div class="btn-group">
+
+              <ng-container *ngIf="me.org_id === organization.id">
+                <button mat-button color="primary" class="btn-connect" (click)="connect(intg)" *ngIf="!intg?.integration?.id">Connect</button>
+                <button mat-button color="primary" *ngIf="intg?.integration?.id  " (click)="disconnect(intg)">Disconnect<mat-icon class="btn-icon-disconnect">check</mat-icon></button>
+                <button mat-button color="primary" *ngIf="intg?.integration?.id && intg?.type?.flow_type === 'form'" class="btn-active" (click)="editIntegration(intg)"><mat-icon color="primary">mode_edit</mat-icon>Edit</button>
+              </ng-container>
+
+              <ng-container *ngIf="me.org_id !== organization.id">
+                <button mat-button color="warn" class="other-org-status" *ngIf="!intg?.integration?.id"><mat-icon color="warn">error_outline</mat-icon>Not connected</button>
+                <button mat-button color="primary" class="other-org-status" *ngIf="intg?.integration?.id"><mat-icon color="primary">check</mat-icon>Connected</button>
+              </ng-container>
+
+              <ng-container *ngIf="intg?.integration?.id">
+                <button mat-button color="primary" class="btn-active" *ngIf="!intg?.integration?.is_active" (click)="toggleActiveStatus(intg)"><mat-icon color="primary">sync</mat-icon>Active</button>
+                <button mat-button color="primary" class="btn-active" *ngIf="intg?.integration?.is_active" (click)="toggleActiveStatus(intg)"><mat-icon color="primary">sync_disabled</mat-icon>Deactive</button>
+              </ng-container>
+
+            </div>
+            <small class="integrate-detail" mat-line>by Skael</small>
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

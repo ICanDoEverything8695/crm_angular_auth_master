@@ -1,0 +1,37 @@
+<section class="auth-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-md-6 col-lg-4 auth-box offset-sm-2 offset-md-3 offset-lg-4">
+        <img src="assets/images/logo.png" class="img-logo">
+        <div *ngIf="!tokenIsInvalid">
+          <h1 class="login-title">Hi, {{userInfo.username}}</h1>
+          <h5 class="">To get started, create a password for your account.</h5>
+          <div class="account-wall">
+            <form class="form-auth" #f="ngForm" (ngSubmit)="f.form.valid && signup(f)" novalidate>
+              <label class="mb-4">{{userInfo.email}}</label>
+              <mat-form-field class="w-100">
+                <input matInput placeholder="Temporary Password" type="password" name="temporary" [(ngModel)]="newRegistration.temporary_pass" autofocus required>
+              </mat-form-field>
+              <mat-form-field class="w-100">
+                <input matInput placeholder="New Password" type="password" name="newPass" [(ngModel)]="newRegistration.new_pass" autofocus required>
+              </mat-form-field>
+              <mat-form-field class="w-100 mb-3">
+                <input matInput placeholder="Confirm Password" type="password" name="confirmPass" [(ngModel)]="newRegistration.confirm_pass" autofocus required>
+              </mat-form-field>
+              <!--START ERROR MESSAGE-->
+              <div class="form-group text-danger" *ngIf="error.isError">
+                <div class="form-control-feedback">{{error.message}}</div>
+              </div>
+              <!---->
+              <button mat-raised-button color="primary" class="btn btn-lg btn-block" type="submit">Set Password</button>
+            </form>
+          </div>
+          <div class="mt-lg-5"><span>Already have a password?</span><a class="ml-1 primary-color" routerLink="/login"> Sign in</a></div>
+        </div>
+        <div *ngIf="tokenIsInvalid">
+          <h3 class="error-message">{{tokenErrorFromServer}}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

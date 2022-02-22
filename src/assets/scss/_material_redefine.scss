@@ -1,0 +1,10 @@
+button.mat-raised-button {
+  outline: none;
+}
+button:focus {
+  outline: none;
+}
+
+.cdk-overlay-container {
+  z-index: 1050;
+}

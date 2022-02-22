@@ -1,0 +1,73 @@
+<h2 class="title">Users</h2>
+<mat-card class="users-card">
+
+  <mat-card-content class="px-lg-4 py-lg-4">
+
+    <!--Select organiztion for Skael Admin-->
+    <div class="org-select-container row">
+      <mat-form-field class="col" *ngIf="me.user_role === USER_ROLES.KA">
+        <mat-select placeholder="Select organization" [(ngModel)]="organization" (change)="onSelectOrganization()">
+          <mat-option *ngFor="let org of organizations" [value]="org">{{org.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="col org-info-column">
+        <div class="org-info-container">
+          <div class="org-info-content">
+            <div><p>Name : </p><p>{{organization.name}}</p></div>
+            <div><p>Type : </p><p>{{organization.org_type_name}}</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--End Select organization content-->
+
+    <!--User content start-->
+    <ng-template [ngIf]="organization.id">
+      <p>New User</p>
+      <crm-create-user-section [user]="newUser" [me]="me" [roles]="roles" (onCreate)="onAddNewUser()"></crm-create-user-section>
+      <p>Current Users</p>
+      <mat-list>
+
+        <ng-template ngFor let-user [ngForOf]="users">
+          <!--Do not show deleted user-->
+          <mat-list-item class="user-list-item" [class.deleted]="user.is_deleted" [class.current-user]="user.email === me.email">
+            <h4 mat-line>
+              {{user.first_name + ' ' + user.last_name}}
+              <small class="user-email">
+                {{user.email}}
+                <span *ngIf="!user.is_deleted" class="status" [class.verified]="user.is_validated"><mat-icon class="verified-icon">verified_user</mat-icon>({{user.is_validated ? 'verified' : 'unverified'}})</span>
+              </small>
+            </h4>
+            <div class="btn-group">
+
+              <ng-template [ngIf]="!user.is_deleted && user.email !== me.email">
+                <button mat-button color="warn" (click)="onResendCode(user)" *ngIf="!user.is_validated">Resend</button>
+                <button mat-button color="primary" (click)="onEditUser(user)">Edit</button>
+                <button mat-button color="primary" (click)="onDeleteUser(user)">Remove</button>
+              </ng-template>
+
+              <div class="deleted-tip" *ngIf="user.is_deleted">
+                <div class="tip-container">
+                  <mat-icon>warning</mat-icon><span>Deleted</span>
+                </div>
+                <button mat-button color="warn" (click)="onRestoreUser(user)" class="restore-user-btn">Restore</button>
+              </div>
+
+              <div class="current-user-tip" *ngIf="user.email === me.email">
+                <div class="tip-container">
+                  <mat-icon>person</mat-icon><span>Current User</span>
+                </div>
+              </div>
+
+            </div>
+            <small class="user-role" mat-line>{{user.user_role}}</small>
+          </mat-list-item>
+        </ng-template>
+
+      </mat-list>
+    </ng-template>
+    <!--User content end-->
+
+  </mat-card-content>
+
+</mat-card>

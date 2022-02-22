@@ -1,0 +1,20 @@
+.recommendations-content {
+  padding: 20px 80px;
+  .title {
+    margin: 3rem 0 !important;
+  }
+  expansion-panel-title {
+    font-family: 'Didact Gothic', sans-serif !important;
+    font-size: 0.9rem;
+    color: orange;
+  }
+  .expansion-panel__content {
+    padding: 20px 45px 45px 0 !important;
+  }
+  .expansion-panel__header {
+    padding: 20px 15px 20px 45px !important;
+  }
+  .expansion-panel__description {
+    color: black !important;
+  }
+}

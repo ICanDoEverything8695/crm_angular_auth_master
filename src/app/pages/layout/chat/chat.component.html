@@ -1,0 +1,20 @@
+<button mat-fab color="accent" class="chat-button" (click)="showChatBox = true" *ngIf="!showChatBox" @sliderIn><mat-icon>chat</mat-icon></button>
+
+<div class="chat-box-container" *ngIf="showChatBox" @flyIn>
+  <div class="chat-box-wrapper">
+    <div class="chat-box--header">
+      <div class="header-icon">
+        <mat-icon>chat</mat-icon>
+        <span>Digital Assistant</span>
+      </div>
+      <div class="header-close-btn">
+        <button mat-icon-button (click)="showChatBox = false"><mat-icon>remove</mat-icon></button>
+      </div>
+    </div>
+    <div class="chat-box--content">
+      <div class="chat-box--iframe-wrapper">
+        <iframe width="100%" height="100%" [src]="safeSrc"></iframe>
+      </div>
+    </div>
+  </div>
+</div>

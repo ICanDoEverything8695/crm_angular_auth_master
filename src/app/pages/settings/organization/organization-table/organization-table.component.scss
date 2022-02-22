@@ -1,0 +1,67 @@
+.organization-table-container {
+  display: flex;
+  flex-direction: column;
+  //width: 100%;
+  max-height: 500px;
+  margin-top: 30px;
+
+  .organization-table {
+    &::-webkit-scrollbar {
+      width: 11px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #2BB2B6;
+      border-radius: 5px;
+    }
+  }
+}
+
+.mat-table {
+  overflow: auto;
+}
+
+.action-icon {
+  color: grey;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.deleted_org {
+  background-color: rgba(244, 67, 54, 0.27);
+}
+
+.crm_org {
+  background-color: rgba(43, 178, 182, 0.37);
+}
+
+.org-table-header {
+  background-color: #2BB2B6;
+}
+
+.org-deleted-tip {
+  align-items: center;
+  display: flex;
+  flex-direction: row-reverse;
+  .action-icon {
+    margin-left: 10px;
+  }
+  .tip-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    mat-icon {
+      color: #f44336;
+    }
+    span {
+      text-align: center;
+      font-size: 10px;
+      color: #f44336;
+    }
+  }
+}
+
+.org-admin-tip {
+  mat-icon {
+    color: #2BB2B6;
+  }
+}

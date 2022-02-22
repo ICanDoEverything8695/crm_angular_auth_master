@@ -1,0 +1,81 @@
+<mat-card class="sidebar-filter-container ml-lg-5 ml-md-2">
+
+  <mat-card-title>
+    Compare
+    <mat-icon class="pull-right sidebar-hint" [matMenuTriggerFor]="sidebar_hint" (mouseover)="showHint()">info_outline</mat-icon>
+    <mat-menu #sidebar_hint="matMenu" class="sidebar-hint-content">
+      Use thise settings to filter the<br>companies included in our comparison.<br><br>Blue <strong>values</strong> and <strong>charts</strong> represent the<br>average for these companies.
+    </mat-menu>
+  </mat-card-title>
+
+  <!--Preset Filter Start-->
+  <!--<mat-card-subtitle>Presets</mat-card-subtitle>-->
+  <!--<mat-card-content>-->
+    <!--<section>-->
+      <!--<mat-select class="filter-element" placeholder="Custom" name="food">-->
+        <!--<mat-option value="0">Basic</mat-option>-->
+        <!--<mat-option value="1">Normal</mat-option>-->
+        <!--<mat-option value="2">Professional</mat-option>-->
+      <!--</mat-select>-->
+      <!--<button color="accent" class="filter-element" mat-button><mat-icon>add</mat-icon>Save current settings</button>-->
+    <!--</section>-->
+  <!--</mat-card-content>-->
+  <!--Preset Fitler End-->
+
+  <!--Vertical Filter Start-->
+  <mat-card-subtitle class="mb-4">Verticals</mat-card-subtitle>
+  <mat-card-content class="mb-4">
+    <section class="vertical-group">
+      <mat-checkbox color="accent" class="filter-element" disableRipple="true" *ngFor="let vertical of verticals" [(ngModel)]="vertical.value" (ngModelChange)="onVerticalFilterChange($event)">{{vertical.vertical ? vertical.vertical : '(blank)'}}</mat-checkbox>
+    </section>
+  </mat-card-content>
+  <!--Vertical Fitler End-->
+
+  <!--Company Filter Start-->
+  <mat-card-subtitle class="mb-4">Company Size</mat-card-subtitle>
+  <mat-card-content class="mb-4">
+    <section>
+      <div class="section-header">
+        <p>MarketCap</p>
+        <button mat-button color="warn" class="reset-range-filter-btn" (click)="onResetCompanySizeFilter(true)">Reset</button>
+      </div>
+      <dx-range-slider
+        [min]="0"
+        [max]="1000000000"
+        [(start)]="analytics_filter.buyer_marketCap.greaterThan"
+        [(end)]="analytics_filter.buyer_marketCap.lessThan"
+        [tooltip]="tooltipMarketCap"
+        [label]="label"
+        (onValueChanged)="onRangeSliderFilterChanged()"
+      ></dx-range-slider>
+    </section>
+    <section>
+      <div class="section-header">
+        <p>Number of Employees</p>
+        <button mat-button color="warn" class="reset-range-filter-btn" (click)="onResetCompanySizeFilter(false)">Reset</button>
+      </div>
+      <dx-range-slider
+        [min]="0"
+        [max]="10000"
+        [(start)]="analytics_filter.buyer_numberOfEmployees.greaterThan"
+        [(end)]="analytics_filter.buyer_numberOfEmployees.lessThan"
+        [tooltip]="tooltipEmployees"
+        [label]="label"
+        (onValueChanged)="onRangeSliderFilterChanged()"
+      ></dx-range-slider>
+    </section>
+  </mat-card-content>
+  <!--Company Filter End-->
+
+  <!--Region Filter Start-->
+  <!--<mat-card-subtitle>Regions</mat-card-subtitle>-->
+  <!--<mat-card-content>-->
+    <!--<section>-->
+      <!--<mat-form-field class="filter-element">-->
+        <!--<textarea matInput placeholder="All regions"></textarea>-->
+      <!--</mat-form-field>-->
+    <!--</section>-->
+  <!--</mat-card-content>-->
+  <!--Region Filter End-->
+
+</mat-card>

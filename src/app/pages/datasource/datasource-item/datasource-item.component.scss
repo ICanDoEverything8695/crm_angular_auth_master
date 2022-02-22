@@ -1,0 +1,27 @@
+.mat-input-element:disabled {
+  color: rgba(0, 0, 0, 0.85) !important;
+}
+
+.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-placeholder {
+  color: #2BB2B6 !important;
+}
+
+.keyword-container {
+  max-height: 300px;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 11px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #2BB2B6;
+    border-radius: 5px;
+  }
+  span {
+    background-color: #337ab7;
+    padding: 0 10px;
+    display: inline-block;
+    margin: 2px 3px;
+    color: white;
+    border-radius: 9px;
+  }
+}

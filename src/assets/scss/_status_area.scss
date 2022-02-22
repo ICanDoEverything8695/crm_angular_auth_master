@@ -1,0 +1,43 @@
+.status-section {
+  .tab-header {
+    line-height: 1;
+    color: black !important;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: 10px;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+  }
+  .tab-main {
+    line-height: 1;
+    margin-bottom: 1px;
+    color: black !important;
+    font-weight: bolder;
+    font-size: 22px;
+    text-align: left;
+    position: absolute;
+    left: 5px;
+  }
+  .tab-footer {
+    position: absolute;
+    margin-top: 20px;
+    left: 5px;
+    color: $main-blue;
+    font-weight: bolder;
+  }
+  .tab-content {
+    margin-top: 1rem;
+  }
+  .mat-tab-label {
+    height: 73px !important;
+  }
+  .mat-ink-bar {
+    background-color: black !important;
+  }
+  @include media-breakpoint-down(sm) {
+    .mat-tab-label {
+      min-width: 120px !important;
+    }
+  }
+}

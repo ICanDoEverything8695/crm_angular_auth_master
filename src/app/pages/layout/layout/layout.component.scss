@@ -1,0 +1,65 @@
+.idle-alert {
+  z-index: 99999;
+  .idle-alert-backdrop {
+    position: absolute;
+    z-index: 100000;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: black;
+    opacity: .6;
+  }
+  .idle-alert-dialog {
+    background: white;
+    max-width: 450px;
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%)translateY(-50%);
+    z-index: 100001;
+    padding: 50px 25px 30px;
+    border-radius: 2px;
+    p {
+      font-size: 1.2rem;
+      text-align: center;
+    }
+  }
+}
+
+.mat-side-nav-container {
+  width: 100%;
+
+  .side-nav-menu {
+    width: 265px;
+    background-color: rgba(0, 0, 0, 0.73);
+
+    .sidenav {
+      color: white !important;
+    }
+
+    .sidenav-setting {
+      color: white !important;
+      font-size: 14px;
+      height: 40px;
+      padding-left: 30px;
+    }
+  }
+
+  .setting-nav{
+    position: relative;
+    &:before {
+      content: "";
+      position: absolute;
+      left: 20px;
+      height: 1px;
+      width: 70%;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+  }
+  .toggle-side-nav-button {
+    z-index: 9999;
+  }
+}

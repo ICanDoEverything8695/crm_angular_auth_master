@@ -1,0 +1,93 @@
+.sidebar-filter-container {
+  width: 320px;
+  position: absolute !important;
+  z-index: 1;
+  border-top: 4px solid $main-blue;
+  .filter-element {
+    width: 100%;
+    margin-bottom: .5rem;
+    &.mat-checkbox {
+      display: block;
+    }
+  }
+  .mat-card-title {
+    font-size: 20px;
+  }
+  .mat-card-subtitle {
+    font-weight: bold;
+    font-size: 12px;
+    color: black;
+    //text-transform: uppercase;
+    border-top: 1px solid rgba(0, 0, 0, 0.13);
+    padding-top: 10px;
+  }
+  p {
+    font-size: 18px;
+    margin-bottom: 0;
+  }
+  @include media-breakpoint-down(sm) {
+    z-index: 100000;
+    width: 90%;
+    transform: translateX(-50%);
+    left: 50%;
+  }
+}
+
+.analytics-content {
+  margin-left: 380px;
+  margin-right: 20px;
+
+  @include media-breakpoint-only(md) {
+    margin-left: 340px;
+  }
+  @include media-breakpoint-down(sm) {
+    margin-left: 20px;
+  }
+  .mat-card-title {
+    font-size: 20px;
+  }
+}
+
+.sidebar-hint {
+  color: grey;
+  cursor: pointer;
+}
+.sidebar-hint-content .mat-menu-content {
+  padding: 15px 5px 15px 15px;
+  strong {
+    color: $main-blue;
+  }
+}
+
+.dx-widget.dx-slider-handle {
+  width: 18px;
+  height: 18px;
+  margin-top: -8px;
+  background-color: $main-green !important;
+  border: none !important;
+  border-radius: 50%;
+  transition: ease all .3ms;
+}
+
+.dx-slider-range.dx-slider-range-visible {
+  background-color: $main-green;
+  border-color: $main-green;
+}
+.dx-slider-wrapper {
+  margin: 15px 0 50px;
+}
+
+@include media-breakpoint-only(md) {
+  .sidebar-filter-container {
+    margin-top: -80px;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .show-xs-side-filter {
+    display: block !important;
+  }
+  .hide-xs-side-filter {
+    display: none !important;
+  }
+}

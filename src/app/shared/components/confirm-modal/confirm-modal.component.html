@@ -1,0 +1,6 @@
+<h4 mat-dialog-title class="text-center">Action confirm</h4>
+<mat-dialog-content class="text-center">Are you sure?</mat-dialog-content>
+<mat-dialog-actions class="justify-content-center">
+  <button class="ml-1" mat-raised-button color="primary" mat-dialog-close>No</button>
+  <button class="ml-1" mat-raised-button color="warn" [mat-dialog-close]="true">Yes</button>
+</mat-dialog-actions>

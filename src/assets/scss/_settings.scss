@@ -1,0 +1,194 @@
+.settings-content {
+  padding: 20px 80px;
+  @include media-breakpoint-down(sm) {
+    padding: 10px 15px;
+  }
+  .title {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+  .users-card {
+    .mat-list .mat-list-item {
+      border-top: 1px solid rgba(0, 0, 0, 0.12) !important;
+    }
+    .user-list-item .mat-list-item-content {
+      padding: 0 0 !important;
+      h4 {
+        font-weight: bold !important;
+        font-size: 15px !important;
+      }
+      .user-email {
+        font-size: 15px !important;
+        color: grey !important;
+        margin-left: 5px;
+      }
+      .user-role {
+        font-size: 12px !important;
+        color: grey !important;
+      }
+      .mat-list-text {
+        padding: 0 20px;
+      }
+    }
+
+    .current-user .mat-list-item-content, .deleted .mat-list-item-content {
+      background-color: rgba(244, 67, 54, 0.27);
+      .current-user-tip, .deleted-tip {
+        width: 165px;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        .tip-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          mat-icon {
+            color: #f44336;
+          }
+          span {
+            text-align: center;
+            font-size: 10px;
+            color: #f44336;
+          }
+        }
+      }
+    }
+
+    .current-user .mat-list-item-content {
+      background-color: rgba(43, 178, 182, 0.38);
+      .current-user-tip {
+        .tip-container {
+          mat-icon, span {
+            color: $main-green;
+          }
+        }
+      }
+    }
+
+    #settings-add-user-form{
+      .btn-area {
+        display: flex;
+        flex-direction: row-reverse;
+        margin-right: 0.25rem !important;
+        margin-left: 0.25rem !important;
+        margin-top: 1rem !important;
+        margin-bottom: 0;
+      }
+      .mat-select-trigger {
+        height: 23px;
+      }
+    }
+  }
+  .profile-card {
+    form {
+      .row {
+        margin-bottom: 20px;
+      }
+    }
+    .error-msg {
+      font-size: 1.2rem;
+      margin-bottom: 0;
+      text-align: center;
+    }
+  }
+  .integrations-card {
+    .integrations-sidebar {
+      padding-left: 10px;
+      li {
+        list-style: none;
+        &.active {
+          button.mat-menu-item {
+            font-weight: 800 !important;
+          }
+        }
+      }
+    }
+    .integrate-list {
+      &.mat-list .mat-list-item .mat-list-icon {
+        width: 70px;
+        height: auto;
+        border-radius: 0;
+      }
+      &.mat-list .mat-list-item {
+        border-top: 1px solid rgba(0, 0, 0, 0.18) !important;
+        padding: 20px 0;
+        &:first-child {
+          border-top: none !important;
+        }
+        h4 {
+          font-weight: 800;
+        }
+        .integrate-detail {
+          color: grey;
+        }
+        button.btn-connect {
+          border: 1.5px solid #2bb2b6;
+        }
+        .btn-icon-disconnect {
+          background: #2bb2b6;
+          color: white;
+          border-radius: 50%;
+          margin-left: 25px;
+          margin-bottom: 3px;
+          font-size: 18px;
+          padding: 3px;
+        }
+        button.btn-active {
+          border: 1.5px solid;
+          span {
+            display: flex;
+            align-items: center;
+          }
+        }
+        button.other-org-status {
+          margin-right: 20px;
+          span {
+            display: flex;
+            align-items: center;
+          }
+        }
+      }
+    }
+  }
+  .organization-card {
+    .domain-input-group {
+      width: 100%;
+      .input-group {
+        &.has-error {
+          input.form-control {
+            border-color: $error-red;
+            background: rgba(217, 83, 79, 0.17);
+          }
+        }
+        input.form-control {
+          margin-right: -4px;
+          font-size: 15px;
+          font-family: "Helvetica Neue", sans-serif;
+        }
+        span {
+          z-index: 11;
+        }
+        button {
+          line-height: 40px;
+          box-shadow: none;
+          &:disabled {
+            background-color: rgb(224, 224, 224);
+          }
+        }
+        @include media-breakpoint-down(sm) {
+          flex-direction: column;
+          input.form-control, button {
+            width: 100%;
+          }
+          button {
+            margin-top: 3px;
+          }
+        }
+      }
+      .form-control-feedback {
+        color: $error-red;
+        padding-left: 15px;
+      }
+    }
+  }
+}

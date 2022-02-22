@@ -1,0 +1,29 @@
+/deep/ .options {
+  padding: 20px;
+  background-color: #f5f5f5;
+  margin-top: 20px;
+}
+/deep/ .option {
+  margin-top: 10px;
+}
+/deep/ .caption {
+  font-size: 18px;
+  font-weight: 500
+}
+/deep/ .option > span {
+  margin-right: 10px;
+}
+/deep/ .option > .dx-widget {
+  display: inline-block;
+  vertical-align: middle;
+}
+.chart-demo {
+  overflow: hidden;
+}
+
+.no-item-to-display {
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

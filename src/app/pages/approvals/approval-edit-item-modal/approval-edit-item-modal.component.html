@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>Edit tag</h2>
+<mat-dialog-content class="modal-md">
+  <form #f="ngForm" (ngSubmit)="f.form.valid && onSaveKeyEdit()">
+    <div class="row">
+      <mat-form-field class="col">
+        <input matInput placeholder="Keyword" name="keyword" [(ngModel)]="tag.keyword_name" disabled required>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field class="col">
+        <mat-select placeholder="Tag" [(ngModel)]="tag.new_tag_id" name="tag" (change)="onSelectNeTag()">
+          <mat-option *ngFor="let ne_tag of ne_tags" [value]="ne_tag.id">{{ne_tag.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions class="modal-footer">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="true" [disabled]="!f.valid" (click)="onSaveKeyEdit()">Save</button>
+</mat-dialog-actions>

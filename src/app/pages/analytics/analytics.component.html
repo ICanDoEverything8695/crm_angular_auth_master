@@ -1,0 +1,15 @@
+<div class="xs-sidebar-backdrop d-block d-sm-none" [ngClass]="showMobileSidebar ? 'show-xs-side-filter' : ''" (click)="showMobileSidebar = false"></div>
+<!--ANALYTICS BREADCRUMB START-->
+<crm-breadcrumb (toggleMobileSidebar)="showMobileSidebar = !showMobileSidebar"></crm-breadcrumb>
+<!--ANALYTICS BREADCRUMB END-->
+<!--SIDEBAR START-->
+<crm-sidebar [ngClass]="showMobileSidebar ? 'show-xs-side-filter' : 'hide-xs-side-filter'" [verticals]="verticals" [analytics_filter]="analytics_filter" (onFilterChange)="filterChanged()"></crm-sidebar>
+<!--SIDEBAR END-->
+<!--ROUTING CONTENT START-->
+<div class="analytics-content">
+  <!--ANALYTICS STATUS START-->
+  <crm-status [totalPurchases]="totalPurchases" [totalPurchasesGraphData]="totalPurchasesGraphData"></crm-status>
+  <!--ANALYTICS STATUS END-->
+  <crm-purchases [vendors]="vendors" [purchase_categories]="purchase_categories"></crm-purchases>
+</div>
+<!--ROUTING CONTENT END-->

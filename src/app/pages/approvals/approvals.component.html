@@ -1,0 +1,14 @@
+<div class="container approvals-content">
+  <h2 class="title">Approvals</h2>
+  <mat-card class="approvals-card">
+    <mat-list>
+      <ng-template ngFor let-approval [ngForOf]="approvals">
+        <mat-list-item [routerLink]="approval.id"><span class="list-text-wrapper">{{approval.url}}</span></mat-list-item>
+        <mat-divider></mat-divider>
+      </ng-template>
+    </mat-list>
+    <div class="no-item-message-container" *ngIf="!approvals.length">
+      <span><mat-icon>info</mat-icon>No data source to approve.</span>
+    </div>
+  </mat-card>
+</div>

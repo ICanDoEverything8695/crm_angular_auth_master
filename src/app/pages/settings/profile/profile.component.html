@@ -1,0 +1,57 @@
+<h2 class="title">Profile</h2>
+<mat-card class="profile-card">
+  <mat-card-content class="px-lg-4 py-lg-4">
+    <form #f="ngForm" (ngSubmit)="f.form.valid && submit()">
+      <div class="row">
+        <mat-form-field class="col">
+          <input matInput placeholder="First Name" name="firstName" [(ngModel)]="profile.first_name">
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field class="col">
+          <input matInput placeholder="Last Name" name="lastName" [(ngModel)]="profile.last_name">
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field class="col">
+          <input matInput placeholder="Email Address" type="email" name="email" [(ngModel)]="profile.email" email disabled>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <div class="btn-group ml-auto">
+          <button type="submit" color="primary" mat-raised-button class="ml-auto mr-3 mt-3" [disabled]="!f.form.valid">Save</button>
+        </div>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+<h2 class="mt-5 mb-3">Update password</h2>
+<mat-card class="password-card">
+  <mat-card-content class="px-lg-4 py-lg-4">
+    <form #updatePassword_f="ngForm" (ngSubmit)="updatePassword_f.form.valid && updatePassword()">
+      <div class="row">
+        <mat-form-field class="col">
+          <input matInput type="password" placeholder="Current password" name="current-password" [(ngModel)]="updatePasswordInfo.current_password">
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field class="col">
+          <input matInput type="password" placeholder="New password" name="new-password" [(ngModel)]="updatePasswordInfo.new_password">
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field class="col">
+          <input matInput type="password" placeholder="Confirm password" name="confirm-password" [(ngModel)]="updatePasswordInfo.confirm_password">
+        </mat-form-field>
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="showError">
+        <p class="error-msg">Sorry, we can not update your password. User password does not match.</p>
+      </div>
+      <div class="row">
+        <div class="btn-group ml-auto">
+          <button type="submit" color="primary" mat-raised-button class="ml-auto mr-3 mt-3" [disabled]="!customPasswordValidation()">Save</button>
+        </div>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

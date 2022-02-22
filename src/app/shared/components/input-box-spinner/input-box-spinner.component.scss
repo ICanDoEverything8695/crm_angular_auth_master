@@ -1,0 +1,15 @@
+.input-box-spinner-container {
+  .input-box-spinner-backdrop {
+    position: absolute;
+    top: 0; right: 0; left: 0; bottom: 0;
+    z-index: 100;
+    background-color: rgba(221, 221, 221, 0.6);
+  }
+  .input-box-spinner-content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%)translateY(-50%);
+    z-index: 101;
+  }
+}

@@ -1,0 +1,21 @@
+.vertical-group {
+  max-height: 240px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 11px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #2BB2B6;
+    border-radius: 5px;
+  }
+}
+
+.section-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  p {
+    width: 100%;
+  }
+}

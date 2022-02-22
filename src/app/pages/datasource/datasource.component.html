@@ -1,0 +1,28 @@
+<div class="container datasource-content">
+  <h2 class="title">Datasource</h2>
+  <mat-input-container class="keyword-input col-12 col-sm-3">
+    <input matInput name="titleKeyword" placeholder="Title keyword" [(ngModel)]="titleKeyword" (ngModelChange)="changeFilter()">
+  </mat-input-container>
+  <mat-input-container class="keyword-input col-12 col-sm-3">
+    <input matInput name="urlKeyword" placeholder="Url keyword" [(ngModel)]="urlKeyword" (ngModelChange)="changeFilter()">
+  </mat-input-container>
+
+  <ul *ngIf="datas.length">
+    <li *ngFor="let data of datas" class="list-item" [routerLink]="[data.id]">
+      <a>{{data.title}}</a>
+      <span class="opt">Created by: {{data.created_by}}</span>
+    </li>
+  </ul>
+
+  <div *ngIf="!datas.length">
+    <div class="no-result">
+      <p>Nothing to Display</p>
+    </div>
+  </div>
+  <mat-paginator [length]="length"
+                 [pageIndex]="pageIndex"
+                 [pageSize]="pageSize"
+                 [pageSizeOptions]="pageSizeOptions"
+                 (page)="onChangePage($event)">
+  </mat-paginator>
+</div>

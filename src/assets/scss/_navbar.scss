@@ -1,0 +1,50 @@
+.navbar {
+  background-color: black;
+  .navbar-brand {
+    img {
+      width: 110px;
+    }
+  }
+  ul {
+    li {
+      color: $white;
+    }
+  }
+  .mat-menu-item {
+    color: white;
+  }
+  button.active {
+    font-weight: bold;
+  }
+  .navbar-toggler {
+    border-color: $light-gray !important;
+    color: $light-gray !important;
+  }
+  .nav-item {
+    cursor: pointer;
+  }
+  .menu-user-name.mat-menu-item {
+    width: auto;
+  }
+  .menu-company-name {
+    display: flex;
+    align-items: center;
+  }
+}
+.mat-menu-panel hr {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.navbar.settings-sub-nav {
+  background-color: $color-sub-nav-bg;
+  .mat-menu-item {
+    color: $black;
+  }
+}
+
+.mat-side-nav-container {
+  @include media-breakpoint-down(sm) {
+    height: calc(100vh - 58px);
+  }
+}

@@ -1,0 +1,98 @@
+body {
+  background-color: $grey-background;
+  font-family: 'Didact Gothic', sans-serif !important;
+}
+.hidden {
+  display: none !important;
+}
+.show {
+  display: block !important;
+}
+.content-loading-ripple {
+  background: rgba(81, 118, 154, 0.9) url(/assets/images/ripple.svg) no-repeat 50% 50%;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+h1, h2, h3, h4, h5, h6, span, p, small, button, input, label, div, mat-cell, mat-header-cell {
+  font-family: 'Didact Gothic', sans-serif !important;
+}
+.mat-raised-button.mat-primary {
+  color: $white;
+  font-family: 'Didact Gothic', sans-serif;
+}
+.primary-color {
+  color: $main-green;
+}
+.active {
+  font-weight: bold;
+}
+
+.dialog-content.mat-dialog-content {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding-top: 20px;
+  padding-bottom: 55px;
+}
+.mat-dialog-title {
+  font: 700 17px/15px Roboto, "Helvetica Neue", sans-serif;
+}
+.modal-footer {
+  button {
+    margin-left: auto;
+  }
+}
+
+.mat-select-panel.mat-primary {
+  &::-webkit-scrollbar {
+    width: 11px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $main-green !important;
+    border-radius: 5px !important;
+    border-color: $main-green !important;
+  }
+}
+
+mat-card {
+  margin-bottom: 10px;
+}
+
+@include media-breakpoint-down(md) {
+  .integrate-list {
+    .mat-list-item-content {
+      .mat-list-text {
+        text-align: center;
+        padding: 12px !important;
+      }
+      height: 100% !important;
+      flex-direction: column !important;
+      button {
+        border: 2px solid;
+        .mat-button-wrapper {
+          text-align: center !important;
+          display: block !important;
+          mat-icon {
+            display: none !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .page-header {
+    flex-direction: column;
+    mat-form-field {
+      width: 80%;
+    }
+  }
+  .mat-dialog-container {
+    max-width: 95vw !important;
+    margin: auto !important;
+  }
+}

@@ -1,0 +1,32 @@
+<h4 mat-dialog-title>Edit User</h4>
+<mat-dialog-content class="dialog-content">
+  <form id="settings-add-user-form" #f="ngForm" (ngSubmit)="f.form.valid && submit()">
+    <div class="row">
+      <mat-form-field class="col">
+        <input matInput placeholder="Username" name="username" [(ngModel)]="user.username" required disabled>
+      </mat-form-field>
+      <mat-form-field class="col-6">
+        <mat-select placeholder="User Role" name="role" [(ngModel)]="user.user_role" required disabled>
+          <mat-option [value]="role" *ngFor="let role of roles">{{role}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field class="col">
+        <input matInput placeholder="First Name" name="firstname" [(ngModel)]="user.first_name">
+      </mat-form-field>
+      <mat-form-field class="col">
+        <input matInput placeholder="Last Name" name="lastname" [(ngModel)]="user.last_name">
+      </mat-form-field>
+    </div>
+    <div class="row mt-3">
+      <mat-form-field class="col">
+        <input matInput placeholder="Email Address" name="emails" type="email" [(ngModel)]="user.email" required>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions class="flex-row-reverse">
+  <button class="ml-1" mat-raised-button color="primary" [disabled]="!f.valid" (click)="submit()">Update</button>
+  <button type="button" class="ml-1" mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

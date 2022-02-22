@@ -1,0 +1,34 @@
+<div class="approved-key-list-container">
+  <div class="approved-key-list-heading">
+    <h4>{{title}} keys ({{keytags?.length}})</h4>
+  </div>
+  <div class="approved-key-list-content">
+    <mat-grid-list [cols]="gridCol" rowHeight="45px" gutterSize="0px" class="approved-key-list">
+      <mat-grid-tile *ngFor="let key of (keytags | filterByImpure : ['display_name'] : searchKeyword) | slice : paginator?.pageIndex * paginator?.pageSize : paginator?.pageSize * (paginator?.pageIndex + 1);let i = index;">
+        <span>{{key?.display_name}}</span>
+
+        <ng-container *ngIf="type === 'approved'">
+          <a class="disapprove-btn" mat-button (click)="onDisapproveItem(key, paginator.pageIndex * paginator.pageSize + i)">Disapprove</a>
+        </ng-container>
+
+        <ng-container *ngIf="type !== 'approved'">
+          <a class="disapprove-btn" mat-button [matMenuTriggerFor]="approveOptions">Approve</a>
+          <mat-menu #approveOptions="matMenu">
+            <button mat-menu-item (click)="onReapproveItem(key, paginator.pageIndex * paginator.pageSize + i, true)">Edit and approve</button>
+            <button mat-menu-item (click)="onReapproveItem(key, paginator.pageIndex * paginator.pageSize + i, false)">Direct approve</button>
+          </mat-menu>
+        </ng-container>
+
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <div class="approval-key-list-footer">
+    <mat-form-field class="search-keyword">
+      <input matInput placeholder="Search keyword" [(ngModel)]="searchKeyword">
+    </mat-form-field>
+    <mat-paginator #paginator [length]="keytags?.length"
+                   [pageSize]="10"
+                   [pageSizeOptions]="[5, 10, 25, 100]">
+    </mat-paginator>
+  </div>
+</div>
